@@ -37,7 +37,7 @@ class ProductController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors(), 400);
         }
 
         $product = new Product();
@@ -123,6 +123,13 @@ class ProductController extends Controller
 
         return response()->json([
             'message' => 'Product deleted successfully'
+        ], 200);  
+    }
+
+    public function getProductById($id){
+        $product = Product::find($id);
+        return response()->json([
+            'product' => $product
         ], 200);  
     }
 }
