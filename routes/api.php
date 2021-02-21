@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'middleware' => 'api',
+    'middleware' => ['api', 'localization'],
     'prefix' => 'auth'
 
 ], function ($router) {
@@ -49,6 +49,9 @@ Route::group([
 
     // VerifyEmail
     Route::get('/verifyemail/{email}', [App\Http\Controllers\AuthController::class, 'verifyemail']);
+
+    // Language
+    Route::get('/lang', [App\Http\Controllers\LanguageController::class, 'index']);
 
 
 });

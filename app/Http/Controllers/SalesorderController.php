@@ -20,7 +20,10 @@ class SalesorderController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'message' => trans('messages.greeting')
+          ];
+          return response()->json($data, 200);
     }
 
     /**
